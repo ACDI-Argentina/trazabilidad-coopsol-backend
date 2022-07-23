@@ -25,7 +25,16 @@ async function getBeekeper(id) {
   return await contract.methods.beekepers(id).call();
 }
 
-async function saveBeekeper(beekeperData) {
+async function saveBeekeper(beekeper) {
+
+  const beekeperData = [
+    beekeper.id,
+    beekeper.fullname,
+    beekeper.activityStartDate.getTime()/1000,
+    beekeper.location,
+    beekeper.infoCid,
+];
+
   const accounts = await web3.eth.getAccounts();
   const result = await contract.methods.saveBeekeper(...beekeperData).send({ from: accounts[0] });
   return result;
