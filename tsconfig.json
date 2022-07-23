@@ -5,10 +5,12 @@
     "allowSyntheticDefaultImports": true,
     "target": "ES6",
     "strict": true,
+    "strictPropertyInitialization": false,
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "dist",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "experimentalDecorators": true
   },
   "include": [
     "src/**/*"
