@@ -1,0 +1,185 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "beekepers",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "fullname",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "activityStartDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "location",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "infoCid",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "keyIndex",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "keys",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "key",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "deleted",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					}
+				],
+				"name": "removeBeekeper",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "fullname",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "activityStartDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "location",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "infoCid",
+						"type": "string"
+					}
+				],
+				"name": "saveBeekeper",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "replaced",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "size",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/5_BeekepersRegistry.sol": "BeekepersRegistry"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/5_BeekepersRegistry.sol": {
+			"keccak256": "0x95681430eabf4cc88ab33db74208f7fdbf78e3b706c31a558d93fbfe631f7388",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://926070b0749528079cd3552d8b5e84ca202c72657d2fcdb9d1bf2f6579139dbe",
+				"dweb:/ipfs/QmRTNkjFVh7MfiTZDmmXqFsCyWSGfkmjigZ82bsTAbLTUy"
+			]
+		}
+	},
+	"version": 1
+}
