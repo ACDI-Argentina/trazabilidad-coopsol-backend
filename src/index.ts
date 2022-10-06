@@ -3,12 +3,24 @@ import express from "express";
 import { loadApiEndpoints } from "./controllers/api";
 import TraceabilityContract from "./lib/TraceabilityContract";
 
+import TraceService from "./services/TraceService";
+
 import provider from "./lib/web3Provider";
 
-const { TRACEABILITY_OWNER, TRACEABILITY_REGISTRY_ADDRESS } = process.env; //
+const { TRACEABILITY_OWNER, TRACEABILITY_REGISTRY_ADDRESS } = process.env; 
+
+const traceService = new TraceService();
+const res = traceService.saveProof({foo: 'bar'})
+console.log("done", res)
+
+//expect e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+
+
+//
 
 //get traceabilityContract(add)
-(async function () {
+/* (async function () {
   try {    
     const traceability = new TraceabilityContract(provider, TRACEABILITY_REGISTRY_ADDRESS!,TRACEABILITY_OWNER!);
  
@@ -17,6 +29,15 @@ const { TRACEABILITY_OWNER, TRACEABILITY_REGISTRY_ADDRESS } = process.env; //
     console.log(`Store hash for key ${key} ${hash}`)
     await traceability.storeHash(key,hash);
     console.log(`Stored`)
+
+    console.log(`try to store repeated key`)
+    try{
+      await traceability.storeHash(key,hash);
+
+    } catch(err){
+      console.log(err);
+    }
+
 
     console.log(`get hash for previous stored key (from smart contract)`)
     console.log(`stored hash:`, await traceability.getHash(key))
@@ -29,7 +50,7 @@ const { TRACEABILITY_OWNER, TRACEABILITY_REGISTRY_ADDRESS } = process.env; //
     console.log(err);
   }
 })()
-
+ */
 
 
 
