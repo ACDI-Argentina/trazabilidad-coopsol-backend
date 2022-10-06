@@ -1,7 +1,8 @@
 const hash = require("object-hash");
 
-type Trace = {
-  id: string
+interface Trace {
+  id?: string,
+  [key: string]: any;
 }
 
 
@@ -9,7 +10,7 @@ export default class TraceService {
   //where intialize contract? receive it as dependency?
 
   //ComputeHash and store
-  saveProof(trace: any) { //Should be an object
+  saveProof(trace: Trace) {
     console.log("Save proof")
     const hashed = hash(trace, { algorithm: "SHA256", encoding: "hex" });
     

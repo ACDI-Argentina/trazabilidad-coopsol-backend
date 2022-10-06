@@ -10,7 +10,8 @@ import provider from "./lib/web3Provider";
 const { TRACEABILITY_OWNER, TRACEABILITY_REGISTRY_ADDRESS } = process.env; 
 
 const traceService = new TraceService();
-const res = traceService.saveProof({foo: 'bar'})
+const trace = { id: "iddd", foo: 'bar', XCXC:"ASDF" };
+const res = traceService.saveProof(trace)
 console.log("done", res)
 
 //expect e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
