@@ -7,8 +7,6 @@ interface Trace {
   id: string,
   [key: string]: any;
 }
-
-
 export default class TraceService {
   contract: TraceabilityContract
 
@@ -22,8 +20,12 @@ export default class TraceService {
       throw new Error(`Invalid id type. Expect string, got ${type}`)
     }
     const hashed = hash(trace);
-    await this.contract.storeHash(trace.id, hashed);
-    return hashed;
+    const txReceipt = await this.contract.storeHash(trace.id, hashed);
+
+    return {
+      hash: hashed, 
+      txReceipt: txReceipt
+    };
   }
 
 
