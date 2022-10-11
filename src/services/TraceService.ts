@@ -17,6 +17,10 @@ export default class TraceService {
   }
 
   async saveProof(trace: Trace) {
+    const type = typeof trace.id;
+    if(type !== "string"){
+      throw new Error(`Invalid id type. Expect string, got ${type}`)
+    }
     const hashed = hash(trace);
     await this.contract.storeHash(trace.id, hashed);
     return hashed;
