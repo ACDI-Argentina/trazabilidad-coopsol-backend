@@ -9,7 +9,6 @@ const {
 const networkUrl = NETWORK_URL || ""; //Si alguno de estos dos no esta seteado, throw error
 const mnemonic = MNEMONIC || ""; //Si alguno de estos dos no esta seteado, throw error
 
-console.log("Initializing provider...")
 const web3Provider = new HDWalletProvider({
   mnemonic: mnemonic,
   url: networkUrl,

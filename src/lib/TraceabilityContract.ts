@@ -43,6 +43,7 @@ export default class TraceabilityContract {
 
 
   async storeHash(traceId: string, hash: string): Promise<string | null> {
+    console.log(`store hash: ${traceId}, ${hash}`)
     const sender = await this.getSender();
 
     //Handle known errors

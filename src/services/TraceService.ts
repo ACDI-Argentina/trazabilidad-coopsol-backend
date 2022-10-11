@@ -1,24 +1,26 @@
-const hash = require("object-hash");
+import TraceabilityContract from "../lib/TraceabilityContract";
+
+const objectHash = require("object-hash");
+export const hash = (obj: Object, extraProps?: Object) => objectHash(obj, { algorithm: "SHA256", encoding: "hex", ...extraProps });
 
 interface Trace {
-  id?: string,
+  id: string,
   [key: string]: any;
 }
 
 
 export default class TraceService {
-  //where intialize contract? receive it as dependency?
+  contract: TraceabilityContract
 
-  //ComputeHash and store
-  saveProof(trace: Trace) {
-    console.log("Save proof")
-    const hashed = hash(trace, { algorithm: "SHA256", encoding: "hex" });
-    
-    //get cntract &* call save
-
-    return hashed;
+  constructor(contract: TraceabilityContract) {
+    this.contract = contract;
   }
 
+  async saveProof(trace: Trace) {
+    const hashed = hash(trace);
+    await this.contract.storeHash(trace.id, hashed);
+    return hashed;
+  }
 
 
 }
