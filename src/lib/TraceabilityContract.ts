@@ -2,7 +2,7 @@ require('dotenv').config()
 import { AbiItem } from 'web3-utils'
 import Web3 from "web3"
 import Traceability from "../artifacts/Traceability_metadata.json"
-import { provider as Provider } from 'web3-core';
+import { TransactionReceipt,  provider as Provider } from 'web3-core';
 import { Contract } from 'web3-eth-contract';
 
 
@@ -42,8 +42,7 @@ export default class TraceabilityContract {
   }
 
 
-  async storeHash(traceId: string, hash: string): Promise<string | null> {
-    console.log(`store hash: ${traceId}, ${hash}`)
+  async storeHash(traceId: string, hash: string): Promise<TransactionReceipt | null> {
     const sender = await this.getSender();
 
     //Handle known errors
