@@ -19,7 +19,10 @@ export default class TraceabilityContract {
     const contract = new web3.eth.Contract(abi, contractAddress);
     web3.eth.getAccounts().then(accounts => {
       this.accounts = accounts;
-      this.sender = accounts[0];
+
+      if(!senderAddress){
+        this.sender = accounts[0];
+      }
     });
 
     this.web3 = web3;
