@@ -1,36 +1,13 @@
-import crypto from "crypto";
 import express from "express";
 import { loadApiEndpoints } from "./controllers/api";
-import TraceabilityContract from "./lib/TraceabilityContract";
-import TraceService from "./services/TraceService";
-import provider from "./lib/web3Provider";
-const { trace1 } = require("./test/data");
+import traceRouter from "./routes/api/v1/trace";
 
-const { TRACEABILITY_OWNER, TRACEABILITY_REGISTRY_ADDRESS } = process.env;
-
-
-(async function () {
-  try {
-    const traceability = new TraceabilityContract(provider, TRACEABILITY_REGISTRY_ADDRESS!, TRACEABILITY_OWNER!);
-    const traceService = new TraceService(traceability);
-    const hashed = await traceService.saveProof({...trace1, id: `${new Date().getTime()}`}); //Comprobar que tenga el campo id: string antes de llamar al metodo
-    
-
-
-  } catch (err) {
-    console.log(err);
-  }
-})()
-
-
-
- 
-/* 
 const app = express();
 app.set("port", process.env.PORT || 3000);
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
+app.use("/api/v1/trace", traceRouter);
 loadApiEndpoints(app);
 
 app.listen(app.get("port"), () => {
@@ -39,5 +16,9 @@ app.listen(app.get("port"), () => {
     app.get("port"),
     app.get("env")
   );
+  /* Consolear el env, sobre todo el addr del smart contract a utilizar y el accounts */
+  console.log(`Using env: `);
+  console.log(`TRACEABILITY_OWNER:`, process.env.TRACEABILITY_OWNER)
+  console.log(`TRACEABILITY_REGISTRY_ADDRESS:`, process.env.TRACEABILITY_REGISTRY_ADDRESS)
+
 })
- */
