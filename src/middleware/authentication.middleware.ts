@@ -14,21 +14,17 @@ function authenticationMiddleware(options: AuthOptions): express.RequestHandler 
     const authorization = req.headers.authorization;
 
     if (!authorization || !authorization?.startsWith("Basic")) {
-      next(Boom.unauthorized('Unauthorized'));
+      return next(Boom.unauthorized('Unauthorized'));
     }
-
     const encoded = authorization?.split("Basic ")[1];
     const decoded = Buffer.from(encoded!, 'base64').toString('ascii');
     const [user, password] = decoded.split(":");
 
     const localPwd = options.users[user];
     if (!localPwd || localPwd !== password) {
-      next(Boom.unauthorized('Unauthorized'));
+      return next(Boom.unauthorized('Unauthorized'));
     }
-
     next();
-
-
 
   };
 }
