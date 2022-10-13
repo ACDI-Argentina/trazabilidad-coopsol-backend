@@ -8,12 +8,16 @@ app.set("port", process.env.PORT || 3000);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/", (req,res,next) => {
+  return res.json({message: "helo"});
+})
 app.use("/api/v1/trace", traceRouter);
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   if(Boom.isBoom(err)){    
     return res.status(err.output.statusCode).json(err.output.payload);
   } else {
+    console.log("Error handling")
     console.error(err.stack)
     res.status(500).send({
       error: err.name,
