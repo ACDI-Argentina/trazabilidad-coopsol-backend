@@ -10,7 +10,8 @@
     "sourceMap": true,
     "outDir": "dist",
     "resolveJsonModule": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*"
