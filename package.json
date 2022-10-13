@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
     "build": "tsc",
-    "test": "jest --verbose --watchAll"
+    "test": "jest --verbose --watchAll",
+    "start": "node ./dist/index.js"
   },
   "keywords": [],
   "author": "",
