@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
-    "build": "tsc",
+    "build": "npx tsc",
     "test": "jest --verbose --watchAll",
     "start": "node ./dist/index.js"
   },
