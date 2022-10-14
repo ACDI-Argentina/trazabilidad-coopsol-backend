@@ -2,8 +2,6 @@ import express from "express";
 import traceRouter from "./routes/api/v1/trace";
 import { Request, Response, NextFunction, Router } from "express";
 import Boom from '@hapi/boom';
-import pjson from "../package.json";
-
 
 const app = express();
 app.set("port", process.env.PORT || 3000);
@@ -14,8 +12,8 @@ app.use("/api/v1/trace", traceRouter);
 app.use("/", (req,res,next) => {
   
   return res.json({
-    name: pjson.name,
-    version: pjson.version
+    "name": "trazabilidad-blockchain-backend",
+    "version": "1.0.0",
   });
 })
 
