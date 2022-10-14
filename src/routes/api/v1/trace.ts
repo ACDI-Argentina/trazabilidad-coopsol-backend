@@ -1,5 +1,6 @@
+import Boom from "@hapi/boom";
 import { Request, Response, NextFunction, Router } from "express";
-import { traceService } from "../../../di";
+import { traceService, traceRepository } from "../../../di";
 import authenticationMiddleware from "../../../middleware/authentication.middleware";
 
 const router = Router();
@@ -26,7 +27,28 @@ router.get("/", auth, async (req: Request, res: Response, next: NextFunction) =>
   }
 })
 
-router.post("/", auth ,async (req: Request, res: Response, next: NextFunction) => {
+//Get trace from traceRepository
+router.get("/query", async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const id = req.query.id;
+    if (!id || typeof id !== "string") {
+      return next(Boom.badRequest());
+    }
+    const doc = await traceRepository.findById(id!);
+    if(doc){
+      return res.json(doc);
+    } else {
+      return res.status(404).json({message:"Not found"}); 
+    }
+
+  } catch (err) {
+    next(err);
+  }
+})
+
+
+
+router.post("/", auth, async (req: Request, res: Response, next: NextFunction) => {
   //TODO: validar que req.body sea un trace
   try {
     const data = req.body;

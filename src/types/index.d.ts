@@ -6,3 +6,8 @@ export type Beekeper = {
   location: string;
   infoCid: string;
 };
+
+export interface Trace {
+  id: string,
+  [key: string]: any;
+}
