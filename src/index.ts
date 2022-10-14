@@ -13,11 +13,14 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/trace", traceRouter);
 app.use("/", (req,res,next) => {
-  
-  return res.json({
+  const info = {
     "name": process.env.npm_package_name,
     "version": process.env.npm_package_version,
-  });
+  };
+  
+  console.log(info)
+
+  return res.json(info);
 })
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
