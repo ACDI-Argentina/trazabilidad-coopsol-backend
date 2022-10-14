@@ -12,8 +12,8 @@ app.use("/api/v1/trace", traceRouter);
 app.use("/", (req,res,next) => {
   
   return res.json({
-    "name": "trazabilidad-blockchain-backend",
-    "version": "1.0.0",
+    "name": process.env.npm_package_name,
+    "version": process.env.npm_package_version,
   });
 })
 
