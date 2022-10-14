@@ -17,7 +17,11 @@ router.use("/", async (req: Request, res: Response, next: NextFunction) => {
     const web3 = new Web3(web3Provider);
     const balance = await web3.eth.getBalance(TRACEABILITY_OWNER);
     info.owner = TRACEABILITY_OWNER;
-    info.ownerBalance = balance;
+
+    if(balance){
+      let fbalance = Number(web3.utils.fromWei(balance)).toFixed(4);
+      info.ownerBalance = `${fbalance} ETH`;
+    }
 
   } catch (err) {
     console.log(err);
