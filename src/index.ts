@@ -2,6 +2,8 @@ import express from "express";
 import traceRouter from "./routes/api/v1/trace";
 import { Request, Response, NextFunction, Router } from "express";
 import Boom from '@hapi/boom';
+import pjson from "../package.json";
+
 
 const app = express();
 app.set("port", process.env.PORT || 3000);
@@ -10,7 +12,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/trace", traceRouter);
 app.use("/", (req,res,next) => {
-  return res.json({message: "hello"});
+  
+  return res.json({
+    name: pjson.name,
+    version: pjson.version
+  });
 })
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
