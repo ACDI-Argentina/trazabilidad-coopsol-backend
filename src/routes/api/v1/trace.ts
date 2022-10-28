@@ -46,6 +46,25 @@ router.get("/query", async (req: Request, res: Response, next: NextFunction) => 
   }
 })
 
+router.get("/:id", async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const id = req.query.id;
+    if (!id || typeof id !== "string") {
+      return next(Boom.badRequest());
+    }
+    const doc = await traceRepository.findById(id!);
+    if(doc){
+      return res.json(doc);
+    } else {
+      return res.status(404).json({message:"Not found"}); 
+    }
+
+  } catch (err) {
+    next(err);
+  }
+})
+
+
 
 
 router.post("/", auth, async (req: Request, res: Response, next: NextFunction) => {
