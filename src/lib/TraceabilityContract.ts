@@ -4,9 +4,10 @@ import Web3 from "web3"
 import Traceability from "../artifacts/Traceability_metadata.json"
 import { TransactionReceipt,  provider as Provider } from 'web3-core';
 import { Contract } from 'web3-eth-contract';
+import { TraceabilityContractI } from './types';
 
 
-export default class TraceabilityContract {
+export default class TraceabilityContract implements TraceabilityContractI{
   web3: Web3
   private abi: AbiItem[]
   private accounts: string[]

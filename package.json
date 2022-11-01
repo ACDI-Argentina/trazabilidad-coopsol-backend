@@ -14,11 +14,13 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/boom": "^10.0.0",
+    "@lacchain/gas-model-provider": "^1.0.1",
     "@truffle/hdwallet-provider": "^2.0.12",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
+    "ethers": "^5.7.2",
     "nedb": "^1.8.0",
     "object-hash": "^3.0.0",
     "web3": "^1.7.4",

@@ -1,4 +1,5 @@
 import TraceabilityContract from "../lib/TraceabilityContract";
+import { TraceabilityContractI } from "../lib/types";
 import TraceRepository from "../repositories/TraceRepository";
 import { Trace } from "../types";
 
@@ -6,11 +7,12 @@ const objectHash = require("object-hash");
 export const hash = (obj: Object, extraProps?: Object) => objectHash(obj, { algorithm: "SHA256", encoding: "hex", ...extraProps });
 
 
+
 export default class TraceService {
-  contract: TraceabilityContract
+  contract: TraceabilityContractI
   traceRepository: TraceRepository
 
-  constructor(contract: TraceabilityContract, traceRepository?: TraceRepository) {
+  constructor(contract: TraceabilityContractI, traceRepository?: TraceRepository) {
     this.contract = contract;
     if(traceRepository){
       this.traceRepository = traceRepository;
