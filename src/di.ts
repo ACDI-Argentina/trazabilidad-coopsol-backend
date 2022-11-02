@@ -21,10 +21,11 @@ const providerLacchain = new GasModelProvider(LACCHAIN_NETWORK_URL);
 const lacchainContract = new LacchainTraceabilityContract(providerLacchain, LACCHAIN_TRACEABILITY_ADDRESS!, LACCHAIN_NODE_ADDRESS!, LACCHAIN_USER_PRIVATE_KEY!);
 
 export const traceServiceLacchain = new TraceService(lacchainContract, traceRepository);
-(async () => {
+/* (async () => {
 
     //await lacchainContract.storeHash("demo-key-3","c0cb7cea656c53c1a30a2c443ce0d3d4d9bf498c4b984cf089f832b2ba7166d9");
 
     const stored = await lacchainContract.getHash("demo-key-3");
     console.log(`stored:`, stored)
 })()
+ */

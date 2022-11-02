@@ -24,11 +24,12 @@ class TraceRepository {
       db.find({ id }, (err: any, docs: any) => {
         err && reject(err);
 
-        if(docs && Array.isArray(docs) && docs.length == 1){
-          const found = docs[0];
+        if(docs && Array.isArray(docs) && docs.length > 0){
+          const last = docs.length - 1;
+          const found = docs[last];
           delete found._id;
           resolve(found);
-        } else {
+        } else { 
           resolve(undefined);
         }
       });

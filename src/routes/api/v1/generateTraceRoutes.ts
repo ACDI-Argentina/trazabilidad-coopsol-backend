@@ -59,7 +59,9 @@ export default function generateTraceRoutes(traceService: TraceService, traceRep
             if (doc) {
                 return res.json(doc);
             } else {
-                return res.status(404).json({ message: "Not found" });
+                return res.status(404).json({ 
+                    message: `Trace with id ${id} not found locally.` 
+                });
             }
 
         } catch (err) {
