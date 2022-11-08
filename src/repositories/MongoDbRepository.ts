@@ -23,7 +23,7 @@ class MongoDbRepository implements TraceRepository {
         const collection = db.collection(this.collectionName);
         this.connected = true;
         this.collection = collection;
-
+        console.log(`MongoDb connected`)
     }
 
     async save(trace: Trace): Promise<unknown> {
@@ -34,9 +34,13 @@ class MongoDbRepository implements TraceRepository {
     async findById(id: string): Promise<unknown> {
         if(!this.connected) throw new Error("Mongo Db is disconnected");
         const mongoDoc = await this.collection.findOne({id: id});
-        const doc: any = mongoDoc;
-        delete doc._id;
-        return doc;
+        if(mongoDoc){
+            const doc: any = mongoDoc;
+            delete doc._id;
+            return doc;
+        } else {
+            return mongoDoc; 
+        }
     }
 
 
