@@ -9,7 +9,7 @@ npm install
 # Set environment variables in .env file, using env_example as guide
 
 NETWORK_URL="https://goerli.infura.io/v3/INFURA_API_KEY"
-MNEMONIC="immune pumpkin ..."
+OWNER_PRIVATE_KEY="0x8c31..."
 BEEKEPERS_REGISTRY_ADDRESS="0xA832694026751eA6e677F516691fd3DF6C524230"
 TRACEABILITY_REGISTRY_ADDRESS="0x0ac5D9F21Fb7071325f184B3C48DC9907493a56b"
 

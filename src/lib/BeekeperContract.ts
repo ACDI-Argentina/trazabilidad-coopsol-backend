@@ -4,22 +4,11 @@ import { Beekeper } from "../types/index";
 import HDWalletProvider from "@truffle/hdwallet-provider";
 import Web3 from "web3"
 import BeekepersRegistryMetadata from "../artifacts/BeekepersRegistry_metadata.json"
+import provider from "../lib/web3Provider";
 
 const {
-  NETWORK_URL,
-  MNEMONIC,
-  BEEKEPERS_REGISTRY_ADDRESS
+  BEEKEPERS_REGISTRY_ADDRESS,
 } = process.env;
-
-
-const networkUrl = NETWORK_URL || ""; //Si alguno de estos dos no esta seteado, throw error
-const mnemonic = MNEMONIC || ""; //Si alguno de estos dos no esta seteado, throw error
-
-const provider = new HDWalletProvider({
-  mnemonic: mnemonic,
-  url: networkUrl,
-  addressIndex: 6
-});
 
 const web3 = new Web3(provider);
 const abi = BeekepersRegistryMetadata.output.abi as AbiItem[];
