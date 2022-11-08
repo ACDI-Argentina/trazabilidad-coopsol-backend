@@ -1,7 +1,7 @@
 import Boom from "@hapi/boom";
 import { Request, Response, NextFunction, Router } from "express";
 import authenticationMiddleware from "../../../middleware/authentication.middleware";
-import TraceRepository from "../../../repositories/TraceRepository";
+import { TraceRepository } from "../../../repositories/TraceRepository";
 import TraceService from "../../../services/TraceService";
 
 export default function generateTraceRoutes(traceService: TraceService, traceRepository: TraceRepository): Router {
@@ -50,7 +50,7 @@ export default function generateTraceRoutes(traceService: TraceService, traceRep
 
     router.get("/:id", async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const id = req.params.id; 
+            const id = req.params.id;
 
             if (!id || typeof id !== "string") {
                 return next(Boom.badRequest());
@@ -59,8 +59,8 @@ export default function generateTraceRoutes(traceService: TraceService, traceRep
             if (doc) {
                 return res.json(doc);
             } else {
-                return res.status(404).json({ 
-                    message: `Trace with id ${id} not found locally.` 
+                return res.status(404).json({
+                    message: `Trace with id ${id} not found locally.`
                 });
             }
 

@@ -1,6 +1,6 @@
 import TraceabilityContract from "../lib/TraceabilityContract";
 import { TraceabilityContractI } from "../lib/types";
-import TraceRepository from "../repositories/TraceRepository";
+import { TraceRepository } from "../repositories/TraceRepository";
 import { Trace } from "../types";
 
 const objectHash = require("object-hash");
@@ -14,20 +14,20 @@ export default class TraceService {
 
   constructor(contract: TraceabilityContractI, traceRepository?: TraceRepository) {
     this.contract = contract;
-    if(traceRepository){
+    if (traceRepository) {
       this.traceRepository = traceRepository;
     }
   }
 
   async saveProof(trace: Trace) {
     const type = typeof trace.id;
-    if(type !== "string"){
+    if (type !== "string") {
       throw new Error(`Invalid id type. Expect string, got ${type}`)
     }
 
     //Se guardan los traces de forma local para poder avanzar con el desarrollo del front, la idea es obtener
     //estos datos del sistema de trazabilidad directamente
-    if(this.traceRepository){
+    if (this.traceRepository) {
       //TODO: avoid overwrite!
       this.traceRepository.save(trace);
     }
@@ -36,7 +36,7 @@ export default class TraceService {
     const txReceipt = await this.contract.storeHash(trace.id, hashed);
 
     return {
-      hash: hashed, 
+      hash: hashed,
       txReceipt: txReceipt
     };
   }
