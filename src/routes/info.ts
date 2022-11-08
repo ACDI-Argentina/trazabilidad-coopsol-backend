@@ -7,7 +7,7 @@ const TRACEABILITY_OWNER = process.env.TRACEABILITY_OWNER!;
 
 const router = Router();
 
-router.use("/", async (req: Request, res: Response, next: NextFunction) => {
+router.get("/", async (req: Request, res: Response, next: NextFunction) => {
   const info: any = {
     "name": process.env.npm_package_name,
     "version": process.env.npm_package_version,

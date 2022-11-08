@@ -15,9 +15,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/", infoRouter);
 app.use("/api/v1/trace", LacchainTraceRouter);
 app.use("/api/v1/goerli/trace", traceRouter);
-app.use("/", infoRouter);
 app.use(errorHandler);
 
 console.log(`NODE ENV`, process.env.NODE_ENV)
