@@ -16,12 +16,24 @@ router.use("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
     const web3 = new Web3(web3Provider);
     const balance = await web3.eth.getBalance(TRACEABILITY_OWNER);
-    info.owner = TRACEABILITY_OWNER;
+    info.goerli = {}
+    info.goerli.owner = TRACEABILITY_OWNER;
 
     if(balance){
       let fbalance = Number(web3.utils.fromWei(balance)).toFixed(4);
-      info.ownerBalance = `${fbalance} ETH`;
+      info.goerli.ownerBalance = `${fbalance} ETH`;
     }
+
+
+    info.lacchain = {};
+
+    info.lacchain.traceability = {
+      address: process.env.LACCHAIN_TRACEABILITY_ADDRESS
+    }
+
+
+
+
 
   } catch (err) {
     console.log(err);

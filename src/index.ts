@@ -15,8 +15,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/v1/lacchain/trace", LacchainTraceRouter);
-app.use("/api/v1/trace", traceRouter);
+app.use("/api/v1/trace", LacchainTraceRouter);
+app.use("/api/v1/goerli/trace", traceRouter);
 app.use("/", infoRouter);
 app.use(errorHandler);
 
